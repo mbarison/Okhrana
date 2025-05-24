@@ -23,7 +23,7 @@ class Deck:
     def sort(self):
         self._cards = sorted(self._cards)
 
-    def deal_cards(self, n=1):
+    def deal_hand(self, n=1):
         assert n > 0 and n <= len(self._cards)
         hand = Hand(self._cards[:n])
         self._cards = self._cards[n:]
