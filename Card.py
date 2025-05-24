@@ -1,8 +1,4 @@
-import random
-
 from enum import Enum, IntEnum
-
-random.seed(42)
 
 class Seed(Enum):
     SPADES = 1
@@ -52,26 +48,8 @@ class Card:
     def __le__(self, other):
         return self._value <= other._value
     
-def create_deck(jokers=True):
-    deck = []
+    def get_seed(self):
+        return self._seed
 
-    for seed in range(1, 5):
-        for value in range(1,14):
-            deck.append(Card(Seed(seed), Value(value)))
-
-    if jokers:
-        for seed in range(5,7):
-            deck.append(Card(Seed(seed), Value(50)))
-
-    return deck
-
-def shuffle_deck(deck):
-    random.shuffle(deck)
-    return deck
-
-def sort_deck(deck):
-    return sorted(deck)
-
-def deal_cards(deck, n=1):
-    assert n > 0 and n <= len(deck)
-    return (deck[:n], deck[n:])
+    def get_value(self):
+        return self._value
